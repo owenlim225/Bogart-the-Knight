@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0h5wovvlim4j"]
+
+[ext_resource type="Script" path="res://scripts/wonwon.gd" id="1_ehywh"]
+[ext_resource type="Texture2D" uid="uid://dv7qomdq70vdl" path="res://assets/img/wonwon.png" id="1_yhh57"]
+[ext_resource type="Shader" path="res://scenes/outline.gdshader" id="2_dmwcd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjuxo"]
+shader = ExtResource("2_dmwcd")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ril8y"]
+atlas = ExtResource("1_yhh57")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxr7x"]
+atlas = ExtResource("1_yhh57")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6nuu"]
+atlas = ExtResource("1_yhh57")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urd8i"]
+atlas = ExtResource("1_yhh57")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cr46s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ril8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxr7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6nuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urd8i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7oqn"]
+radius = 6.08276
+
+[node name="wonwon" type="Area2D"]
+scale = Vector2(3.94788, 3.94788)
+script = ExtResource("1_ehywh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qjuxo")
+sprite_frames = SubResource("SpriteFrames_cr46s")
+autoplay = "default"
+frame_progress = 0.469625
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_a7oqn")

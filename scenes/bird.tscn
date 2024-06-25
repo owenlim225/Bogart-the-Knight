@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://dufa517kjvfvf"]
+
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_3criv"]
+[ext_resource type="Texture2D" uid="uid://dyasm1fruq87r" path="res://assets/img/obstacles/Bird.png" id="1_8awvf"]
+[ext_resource type="Shader" path="res://scenes/outline.gdshader" id="2_pn5x7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxkua"]
+shader = ExtResource("2_pn5x7")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf321"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlkxn"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn5s6"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qonsi"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8wi4"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdly4"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o08aw"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rabk"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q73v"]
+atlas = ExtResource("1_8awvf")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2152q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf321")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlkxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn5s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qonsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8wi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdly4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o08aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rabk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q73v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24n8w"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ouljq"]
+radius = 4.0
+height = 18.1003
+
+[node name="Bird" type="Area2D"]
+scale = Vector2(3.131, 3.02942)
+script = ExtResource("1_3criv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_nxkua")
+sprite_frames = SubResource("SpriteFrames_2152q")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.308045
+
+[node name="head" type="CollisionShape2D" parent="."]
+position = Vector2(3, -1)
+shape = SubResource("CapsuleShape2D_24n8w")
+
+[node name="beak" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 1.19209e-07)
+rotation = -1.71542
+shape = SubResource("CapsuleShape2D_ouljq")

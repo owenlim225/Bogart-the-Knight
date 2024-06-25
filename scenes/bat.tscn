@@ -1,0 +1,132 @@
+[gd_scene load_steps=22 format=3 uid="uid://dt6thad042ihf"]
+
+[ext_resource type="Script" path="res://scripts/bat.gd" id="1_gojlk"]
+[ext_resource type="Shader" path="res://scenes/outline.gdshader" id="2_bmxyk"]
+[ext_resource type="Texture2D" uid="uid://dvj30mpcujafi" path="res://assets/img/BatAttack.png" id="2_h58l4"]
+[ext_resource type="Texture2D" uid="uid://bbeei0tmtywdk" path="res://assets/img/BatMovement.png" id="3_2hu6o"]
+[ext_resource type="Texture2D" uid="uid://bvsv5iyj3yxeo" path="res://assets/img/2dLights.webp" id="5_n7j0d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cs4k"]
+shader = ExtResource("2_bmxyk")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4schn"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iu77"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ywv6"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjjjf"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42l81"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epbya"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioyox"]
+atlas = ExtResource("2_h58l4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f341"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l67s"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwrvp"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sdhi"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41nsj"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65qvv"]
+atlas = ExtResource("3_2hu6o")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwo3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4schn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iu77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ywv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjjjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42l81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epbya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioyox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f341")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l67s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwrvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sdhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41nsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65qvv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asl3w"]
+
+[node name="bat" type="Area2D"]
+scale = Vector2(2.75875, 2.75875)
+script = ExtResource("1_gojlk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_2cs4k")
+sprite_frames = SubResource("SpriteFrames_qwo3r")
+autoplay = "default"
+frame_progress = 0.524271
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.559374, -0.564154)
+shape = SubResource("CircleShape2D_asl3w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16.3117, -19.5741)
+scale = Vector2(-0.1564, -0.1564)
+texture = ExtResource("5_n7j0d")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdvvyq7gqmhl4"]
+
+[ext_resource type="Texture2D" uid="uid://dkw6thaio0hfe" path="res://assets/img/obstacles/rock.png" id="1_ca4xx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fl32"]
+radius = 15.3491
+
+[node name="Stone" type="Area2D"]
+z_index = 1
+position = Vector2(8, -43)
+scale = Vector2(2.80222, 2.80222)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ca4xx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 1
+polygon = PackedVector2Array(-26, 15, -28, 12, -29, 4, -26, -6, -20, -13, -12, -15, -6, -14, -1, -10, 0, -7, 6, -7, 11, -3, 15, 4, 17, 6, 21, 6, 25, 9, 28, 14, 28, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11.0627, 0.35686)
+shape = SubResource("CircleShape2D_4fl32")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dik08cfdlw1v7"]
+
+[sub_resource type="Gradient" id="Gradient_mrl08"]
+offsets = PackedFloat32Array(0, 0.329545)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3uxhb"]
+gradient = SubResource("Gradient_mrl08")
+width = 100
+
+[sub_resource type="Curve" id="Curve_s3dca"]
+max_value = 348.12
+_data = [Vector2(0.415888, 0.516981), 0.0, 0.0, 0, 0, Vector2(0.752337, 258.791), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xir8i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_hova6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2pp6h"]
+curve_x = SubResource("Curve_s3dca")
+curve_y = SubResource("Curve_xir8i")
+curve_z = SubResource("Curve_hova6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nbn3i"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(700, 500, 1)
+direction = Vector3(-1, 0, 0)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 10.0
+scale_curve = SubResource("CurveXYZTexture_2pp6h")
+color = Color(0.796078, 0.827451, 0.996078, 0.227451)
+color_ramp = SubResource("GradientTexture1D_3uxhb")
+
+[node name="run_particles" type="GPUParticles2D"]
+position = Vector2(1095, 383)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_nbn3i")
